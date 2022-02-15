@@ -11,6 +11,7 @@ Risk = probability of occurrence * expectation of damage The goal is not to show
 Go to the website for geodata of Saxony and download the tiles 3805684 and 3825684 as DGM1, like in the screenshot below
 https://www.geodaten.sachsen.de/downloadbereich-digitale-hoehenmodelle-4851.html
 
+![name-of-you-image](https://github.com/charliewahl/FloodRiskAnalysis/blob/main/Download_DEM.png?raw=true)
 
 
 2) Vectorlayer for buildings: https://www.geodaten.sachsen.de/downloadbereich-hausumringe-4174.html
