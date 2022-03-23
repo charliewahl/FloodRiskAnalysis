@@ -15,6 +15,19 @@ Rivers are the lifeline of our cities but occasionally, they can become threads 
      
  # How to download the required Data   
  
+ <details>
+   <summary><b>File storage</b></summary>
+<br/>
+  
+  * extract and have a look around the given 'FloodRiskProject.zip' folder.
+  
+    * inside you will find a folder called 'Data', in which the required Vector- and Rasterdata will be stored in. Besides, we built two QGIS-Models  `Cartography&Styles.model3` and `FloodRiskMap.model3`. 
+
+    * `RasterData` and `Vectordata` folder consist of `.bat`- files which give further instructions on how to process the required Data for the models. 
+
+    * additionally, inside the VectorData-folder we stored preset Vectorstyle-layers in `.png`-Format for further usages that will be shown further down.
+</details>
+ 
 <details>
    <summary><b>How to aquire Raster Data</b></summary>
 <br/>
@@ -31,9 +44,9 @@ Rivers are the lifeline of our cities but occasionally, they can become threads 
    <summary><b>How to aquire Vector Data</b></summary>
 <br/>
  
-* **URBAN ATLAS 2018** Landuse <a href="https://land.copernicus.eu/local/urban-atlas/urban-atlas-2018?tab=download">Urban Atlas 2018</a> and select `Dresden` in the `Download`. After selecting the Data ýou need to download and extract the files into the `Vector Data` Folder  
+* **URBAN ATLAS 2018** Landuse <a href="https://land.copernicus.eu/local/urban-atlas/urban-atlas-2018?tab=download">Urban Atlas 2018</a> and select `Dresden` in the `Download`. After selecting the Data ýou need to download and extract the files into the `Vector Data` Folder. After ectracting the Data you should have a Geopackage called `DE009L2_DRESDEN_UA2018_v013.gpkg`
    
-* **Geofabrik OSM Data** visit <a href="https://download.geofabrik.de/europe/germany/sachsen.html">Geofabrik Sachsen</a>. Download and store the OSM Data into the `Vector Data` Folder in Shapefile-format (`sachsen-latest-free.shp.zip`). In addtition it will be necessary to ectract the Data to get access
+* **Geofabrik OSM Data** visit <a href="https://download.geofabrik.de/europe/germany/sachsen.html">Geofabrik Sachsen</a>. Download and store the OSM Data into the `Vector Data` Folder in Shapefile-format (`sachsen-latest-free.shp.zip`) inside the `VectorData`-folder. In addtition it will be necessary to ectract the Data to get access
    
    </details> 
    
