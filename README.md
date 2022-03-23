@@ -33,13 +33,13 @@ Rivers are the lifeline of our cities but occasionally, they can become threads 
  
 * **URBAN ATLAS 2018** Landuse <a href="https://land.copernicus.eu/local/urban-atlas/urban-atlas-2018?tab=download">Urban Atlas 2018</a> and select `Dresden` in the `Download`. After selecting the Data ýou need to download and extract the files into the `Vector Data` Folder  
    
-* **Geofabrik OSM Data** visit <a href="https://download.geofabrik.de/europe/germany/sachsen.html">Geofabrik Sachsen</a> and select the OSM Data as `Shapefiles`. In a next step you will have to move and extract the data into the `Vektor Data` Folder.
+* **Geofabrik OSM Data** visit <a href="https://download.geofabrik.de/europe/germany/sachsen.html">Geofabrik Sachsen</a>. Download and store the OSM Data into the `Vector Data` Folder in Shapefile-format (`sachsen-latest-free.shp.zip`). In addtition it will be necessary to ectract the Data to get access
    
    </details> 
    
 
 # Required software
-   * QGIS Desktop 3.22 including the Plugins
+   * QGIS Desktop 3.16 including the Plugins
 
      * SAGA 7.8.2-14 
      * GDAL 3.4.2
@@ -54,8 +54,8 @@ Rivers are the lifeline of our cities but occasionally, they can become threads 
 <br/>
    
 1. Before using our downloaded Data in `QGIS` it has to be preprocessed via `Gdal`. Therefore we have created `.bat` inside the `vector Data` as well as in the `Raster Data` folder,containing a short documentation on how to process the Data. 
-
-2. After running through the preprocessing youwill be able to run the Data in the follwoing Models.
+  
+2. After running through the preprocessing you will be able to run the Data in the follwoing Models.
    
  </details>      
    
@@ -80,6 +80,17 @@ Rivers are the lifeline of our cities but occasionally, they can become threads 
       6. `water` is a Category output from the `Landuse reprojected` layer, which will be needed for the final map styling.
       
       7.  Finally run the Model and have a close look at your outputs!
+  
+  3. Open the Model `Cartography&Styles.model3` as done with the previous Model.
+  
+      1. All the styles need to be copies from the folder `styles` into the same folder as the downloaded OpenStreetMap Data from <a href="https://download.geofabrik.de/europe/germany/sachsen.html">Geofabrik Sachsen</a>. Remove all the layers which don't match with the style names afterwards (because we won't need them).
+ 
+       2. the specific stylings of the OpeStreetMap geometries are stored under the same name as the geometries exept that they come in `.qml` -Format. Therefore it is necessary to browse the stylings of each layer from the `sachsen-latest-free.shp` into the Model.
+  
+       3. As before the **DGM1 merged + reprojected** `Riesa_merged` will work as our Area Of Interest for clipping the Layers by an extent.
+  
+       4. Additionally we will have to brwose the initially preprocessed OSM files and set them as individual inputs. If you ran through the files as stated in the preprocessing you will have they will have the same name as written above the boxes in te modelbuilder.
+          
    
 
 
