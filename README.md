@@ -1,37 +1,92 @@
-# FloodRiskAnalysis
+## FloodRiskAnalysis
 Rivers are the lifeline of our cities but occasionally, they can become threads to buildings, infrastructure and human lives. Flood events can show up annually, but bigger and unexpected events hit the local community hard and bring about huge damage. Authorities need an overview, what areas could be affected if weather conditions like heavy rain are recognized. An important tool to take measures in advance are flood risk maps.
 
 # Definition
 
-Risk = probability of occurrence * expectation of damage The goal is not to show regions most likely to be flooded, but visualize areas are most likely to experience damage to infrastructure, buildings and citizen by floods.
+                              Risk = probability of occurrence x expectation of damage
+   * It is our goal not to show regions most likely to be flooded, but visualize areas that are most likely to experience damage by floodings such as Urban Areas, Infrastructure, Argricultural Land or Green Areas.
 
 # Required data
 
-1) DEM with resolution of 1x1m of the city Riesa
-Go to the website for geodata of Saxony and download the tiles 3805684 and 3825684 as DGM1, like in the screenshot below
-https://www.geodaten.sachsen.de/downloadbereich-digitale-hoehenmodelle-4851.html
-
-![name-of-you-image](https://github.com/charliewahl/FloodRiskAnalysis/blob/main/Download_DEM.png?raw=true)
-
-
-2) Vectorlayer for buildings: https://www.geodaten.sachsen.de/downloadbereich-hausumringe-4174.html
-3) Vectrolayer for rivers and streets (Download Basis-DLM Shape): https://www.geodaten.sachsen.de/downloadbereich-basis-dlm-4168.html
-
-
+   * Copernicus Landuse Data in Riesa: Urban Atlas LCLU 2018 provides reliable high resolution land use and land cover Data in vector format for the              reference year 2018 (https://land.copernicus.eu/local/urban-atlas/urban-atlas-2018)
+   * Vector Data for visualizing areas with different risks during flood events in Riesa: OpenStreetMap Data Extracts from GeoFabrik                              (https://download.geofabrik.de/europe/germany/sachsen.html)
+   * High resolution Raster Data for Riesa: Digitiales Geländemodell (DGM1) with a grid ize of 2 km x 2 km and a resolution of 1 m x 1 m, !free to download!
+     (https://www.geodaten.sachsen.de/downloadbereich-digitale-hoehenmodelle-4851.html)
+     
+ # How to download the required Data   
+ 
+<details>
+   <summary><b>How to aquire Raster Data</b></summary>
+<br/>
+   
+  * **Digitales Geländemodell (DGM1)** <a href="//https://www.geodaten.sachsen.de/downloadbereich-digitale-hoehenmodelle-4851.html">Sachsen.de/downloadbereich-digitale_hoehenmodelle</a> and download tiles 3805684 and 3825684 as shown in the screenshot below
+ 
+ ![name-of-you-image](https://github.com/charliewahl/FloodRiskAnalysis/blob/main/Download_DEM.png?raw=true)
+   
+   * download  and extract the DGM1 tiles into `Raster Data` Folder. In the ectracted Folder you will find a Spreadsheet with specific information on your downloaded tiles and `.xyz` tiles which will be used in further processing. for the sake of simplicity, copy both `.xyz` files into the `Rasterdata` folder.
+   
+ </details>      
+   
+ <details>
+   <summary><b>How to aquire Vector Data</b></summary>
+<br/>
+ 
+* **URBAN ATLAS 2018** Landuse <a href="https://land.copernicus.eu/local/urban-atlas/urban-atlas-2018?tab=download">Urban Atlas 2018</a> and select `Dresden` in the `Download`. After selecting the Data ýou need to download and extract the files into the `Vector Data` Folder  
+   
+* **Geofabrik OSM Data** visit <a href="https://download.geofabrik.de/europe/germany/sachsen.html">Geofabrik Sachsen</a> and select the OSM Data as `Shapefiles`. In a next step you will have to move and extract the data into the `Vektor Data` Folder.
+   
+   </details> 
+   
 
 # Required software
-   QGIS
-   SAGA
-   Gdal
+   * QGIS Desktop 3.22 including the Plugins
 
-# Methodology
-1) Preparing layers
+     * SAGA 7.8.2-14 
+     * GDAL 3.4.2
 
-Copy your DEMs and rename the copies as “dem_riesa1.tif” and “dem_riesa2.tif” 
-Use the OSGeo Shell to merge the two DEM tiles to one tif with following command
-Gdal_merge -o dem_riesa.tif dem_riesa1 dem_riesa2
-Load your new tif into QGIS
+   * Visual Studio Code 1.65.2 (or any other texteditor application to open `.bat` files)
+  
 
+# Methology
+
+<details>
+   <summary><b>1. Pre-processing</b></summary>
+<br/>
+   
+1. Before using our downloaded Data in `QGIS` it has to be preprocessed via `Gdal`. Therefore we have created `.bat` inside the `vector Data` as well as in the `Raster Data` folder,containing a short documentation on how to process the Data. 
+
+2. After running through the preprocessing youwill be able to run the Data in the follwoing Models.
+   
+ </details>      
+   
+ <details>
+   <summary><b>2. setting up the QGIS Model</b></summary>
+<br/>   
+
+   1. Open the QGIS application and open the `FloodRiskMap.model3` via the Data Soucre Manager.
+
+   2. Add the required data inputs into the Model 
+
+      1. **extent of merged DGM1**: this input is necessary to get the `gdal_calc.py` running properly an of course for defining a Region of Interest  we need to specify the extent of our Project. For simplicity reasons we used the extent of the merged DGM1 `riesa_merged`, which will atomaticially be calculated after setting the Rasterlayer as an input here.
+
+      2. In **Landuse reprojected** we will need the unpacked Vector Layer `DE009L2_DRESDEN_UA2018.shp` from the `Landuse Shapefiles` folder from the steps before. While running th Model, the Landuse Layer will be split into categories and  eventually given weights according to the vunerability of the chosen categories (for more details have look at `documentation`or **`FloodRiskModel.png`).
+
+      3. **DGM1 merged + reprojected** is the preprocessed Raster Layer `Riesa_merged` which on the one hand side will be used for creating an Area of Interest for our project and on the other hand side it will work as the fundamental input for our Flood Risk Secenarios by `Filling Sinks (Wang & Liu)` and using the `Gdal_calc`.
+
+      4. The following Model outputs `weighted categories` and `alarmpoints_merged` have only been added for demonstration reasons-it is up to you whether you want to have a look at them or not
+   
+      5. The output `Flood Risk Map` is the final output. This means the box will be left as ticked.
+   
+      6. `water` is a Category output from the `Landuse reprojected` layer, which will be needed for the final map styling.
+      
+      7.  Finally run the Model and have a close look at your outputs!
+   
+
+
+         
+ 
+   
+   
 2) Flood occurrence
 
 Fill Sinks:
