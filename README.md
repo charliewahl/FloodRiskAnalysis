@@ -103,7 +103,7 @@ Rivers are the lifeline of our cities but occasionally, they can become threads 
   
        3. As before the **DGM1 merged + reprojected** `Riesa_merged` will work as our Area Of Interest for clipping the Layers by an extent.
   
-       4. Additionally we will have to brwose the initially preprocessed OSM files and set them as individual inputs. If you ran through the files as stated in the preprocessing you will have they will have the same name as written above the boxes in te modelbuilder.
+       4. Additionally you will have to browse the initially preprocessed OSM files from your files and set them as individual inputs. If you ran through the files as stated in the preprocessing the input files will have the same name as written above the boxes in te modelbuilder.
           
    
 
