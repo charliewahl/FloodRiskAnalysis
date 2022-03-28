@@ -26,7 +26,7 @@ Rivers are the lifeline of our cities but occasionally, they can become threats 
 
     * `RasterData` and `Vectordata` folder consist of `.bat`- files which give further instructions on how to process the required Data for the models. 
 
-    * Aditionally, inside the Vector- and Raster Data Folder we stored preset Vectorstyle-layers in `.png`-Format for further usages that will be shown further down. 
+    * Aditionally, we stored preset Vectorstyle-layers  `.png`-Format insde the Vector- and Raster Data Folder. The usages will be  that will be shown further down. 
  > Note: It is important that QGIS-Styles in `.png` are stored in the same folder as the Layers loaded into QGIS. Otherwise, if this would not be the case, the loaded Layers would be shown in a random default style, even if the Styles are added into the QGIS-Model  
 </details>
  
@@ -99,7 +99,7 @@ Rivers are the lifeline of our cities but occasionally, they can become threats 
   
   3. Open the Model `Cartography&Styles.model3` as done with the previous Model.
   
-      1. All the needed Layer Styles  to be copied from the folder `` into the same folder as the downloaded OpenStreetMap Data from <a href="https://download.geofabrik.de/europe/germany/sachsen.html">Geofabrik Sachsen</a> (Otherwise the Styles won't be applied ot the layers in QGIS). 
+      1. All the needed Layers to be copied from the folder `` into the same folder as the downloaded OpenStreetMap Data from <a href="https://download.geofabrik.de/europe/germany/sachsen.html">Geofabrik Sachsen</a> (Otherwise the Styles won't be applied ot the layers in QGIS). 
 
        2. Remove all the layers which don't match with the style names afterwards (because we won't need them).
  
