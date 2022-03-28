@@ -26,7 +26,7 @@ Rivers are the lifeline of our cities but occasionally, they can become threats 
 
     * `RasterData` and `Vectordata` folder consist of `.bat`- files which give further instructions on how to process the required Data for the models. 
 
-    * Aditionally, we stored preset Vectorstyle-layers  `.png`-Format insde the Vector- and Raster Data Folder. The usages will be  that will be shown further down. 
+    * Aditionally, we stored preset Vectorstyle-layers  `.png`-Format insde the Vector- and Raster Data Folder. The usages will be shown further down. 
  > Note: It is important that QGIS-Styles in `.png` are stored in the same folder as the Layers loaded into QGIS. Otherwise, if this would not be the case, the loaded Layers would be shown in a random default style, even if the Styles are added into the QGIS-Model  
 </details>
  
