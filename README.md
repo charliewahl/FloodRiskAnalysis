@@ -74,7 +74,7 @@ Rivers are the lifeline of our cities but occasionally, they can become threads 
  </details>      
    
  <details>
-   <summary><b>2. setting up the QGIS Model</b></summary>
+   <summary><b>2. setting up and running the QGIS Models</b></summary>
 <br/>   
 
    1. Open the QGIS application and open the `FloodRiskMap.model3` via the Data Soucre Manager.
@@ -97,13 +97,19 @@ Rivers are the lifeline of our cities but occasionally, they can become threads 
   
   3. Open the Model `Cartography&Styles.model3` as done with the previous Model.
   
-      1. All the styles need to be copies from the folder `styles` into the same folder as the downloaded OpenStreetMap Data from <a href="https://download.geofabrik.de/europe/germany/sachsen.html">Geofabrik Sachsen</a>. Remove all the layers which don't match with the style names afterwards (because we won't need them).
+      1. All the styles need to be copied from the folder `styles` into the same folder as the downloaded OpenStreetMap Data from <a href="https://download.geofabrik.de/europe/germany/sachsen.html">Geofabrik Sachsen</a> (Otherwise the Styles won't be applied ot the layers in QGIS). 
+
+       2. Remove all the layers which don't match with the style names afterwards (because we won't need them).
  
-       2. the specific stylings of the OpeStreetMap geometries are stored under the same name as the geometries exept that they come in `.qml` -Format. Therefore it is necessary to browse the stylings of each layer from the `sachsen-latest-free.shp` into the Model.
+       3. the specific stylings of the OpeStreetMap geometries are stored under the same name as the geometries exept that they come in `.qml` -Format. Therefore it is necessary to browse the stylings of each layer from the `sachsen-latest-free.shp` into the Model.
   
-       3. As before the **DGM1 merged + reprojected** `Riesa_merged` will work as our Area Of Interest for clipping the Layers by an extent.
+       4. As before the **DGM1 merged + reprojected** `Riesa_merged` will work as our Area Of Interest for clipping the Layers by an extent.
   
-       4. Additionally you will have to browse the initially preprocessed OSM files from your files and set them as individual inputs. If you ran through the files as stated in the preprocessing the input files will have the same name as written above the boxes in te modelbuilder.
+       5. Additionally you will have to browse the initially preprocessed OSM files from your files and set them as individual inputs. If you ran through the files as stated in the preprocessing the input files should have the same name as written above the boxes in te modelbuilder.
+  
+       6. Run the Model
+  
+       7. Set the order of the created Layers as stated in `QGIS_layer_order.png`
           
    
 
@@ -112,18 +118,5 @@ Rivers are the lifeline of our cities but occasionally, they can become threads 
  
    
    
-2) Flood occurrence
 
-Fill Sinks:
-Open the toolbox in QGIS and search for “Fill sinks (Wang & Lui)”. If SAGA is not installed on your QGIS, go to plugins and install the plugin SAGA. For the inputlayer, choose the dem_riesa. Make sure that for the output layers, the tick is only at “Filled dem”. You will not need “Flow Directions” and “Watershed Basins” and by not creating them, the program will not need that much time. After running the program, there will be a new layer, that looks similar to the DEM. Export it as a GEOTiff file with the name “filled_dem”.
-
-Alarm points:
-The city of Riesa published four different water levels, which are alarm points for the local community, because of flood events with different intensity. You will create four layers, which are showing the situation of the four water levels.
-This step you will need to do four times to create four flood scenarios. Open the raster calculator in QGIS and time in following commands:
--	( ( “filled_dem” <= 94.8 ) = 1 ) AND ( ( “filled_dem” >= 94.8 ) = 0 )
--	( ( “filled_dem” <= 96 ) = 1 ) AND ( ( “filled_dem” >= 96 ) = 0 )
--	( ( “filled_dem” <= 96.8 ) = 1 ) AND ( ( “filled_dem” >= 96.8 ) = 0 )
--	( ( “filled_dem” <= 97.6 ) = 1 ) AND ( ( “filled_dem” >= 97.6 ) = 0 )
-
-Safe the outputlayers at your local machine and name them “alarmpoint_1”, “alarmpoint_2”, “alarmpoint_3” and “alarmpoint_4”.
 
