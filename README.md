@@ -1,5 +1,6 @@
-## FloodRiskAnalysis
-Rivers are the lifeline of our cities but occasionally, they can become threads to buildings, infrastructure and human lives. Flood events can show up annually, but bigger and unexpected events hit the local community hard and bring about huge damage. Authorities need an overview, what areas could be affected if weather conditions like heavy rain are recognized. An important tool to take measures in advance are flood risk maps.
+## Flood Risk Analysis
+
+Rivers are the lifeline of our cities but occasionally, they can become threats to buildings, infrastructure and most importantly human lives. Flood events can show up annually, but bigger and unexpected events hit the local community hard and bring huge damage. Authorities need an overview of the affected if weather conditions like heavy rain is recognized. Important tools for takeing measures in advance, are flood risk maps.
 
 # Definition
 
@@ -8,7 +9,7 @@ Rivers are the lifeline of our cities but occasionally, they can become threads 
 
 # Required data
 
-   * Copernicus Landuse Data in Riesa: Urban Atlas LCLU 2018 provides reliable high resolution land use and land cover Data in vector format for the              reference year 2018 (https://land.copernicus.eu/local/urban-atlas/urban-atlas-2018)
+   * Copernicus Landuse Data in Riesa: Urban Atlas LCLU 2018 provides reliable high resolution land use and land cover Data in vector format for the              reference year 2018 (https://land.copernicus.eu/local/urban-atlas/urban-atlas-2018). ! In order to download Data from the Website you have to create an account beforehand. !
    * Vector Data for visualizing areas with different risks during flood events in Riesa: OpenStreetMap Data Extracts from GeoFabrik                              (https://download.geofabrik.de/europe/germany/sachsen.html)
    * High resolution Raster Data for Riesa: Digitiales Geländemodell (DGM1) with a grid ize of 2 km x 2 km and a resolution of 1 m x 1 m, !free to download!
      (https://www.geodaten.sachsen.de/downloadbereich-digitale-hoehenmodelle-4851.html)
@@ -36,7 +37,7 @@ Rivers are the lifeline of our cities but occasionally, they can become threads 
  
  ![name-of-you-image](https://github.com/charliewahl/FloodRiskAnalysis/blob/main/Download_DEM.png?raw=true)
    
-   * download  and extract the DGM1 tiles into `Raster Data` Folder. In the ectracted Folder you will find a Spreadsheet with specific information on your downloaded tiles and `.xyz` tiles which will be used in further processing. for the sake of simplicity, copy both `.xyz` files into the `Rasterdata` folder.
+   * download  and extract the DGM1 tiles into `Raster Data` Folder. In each of the two ectracted folders  you will find a `.xyz` tile which will be used in further processing and a Spreadsheet with specific information on your downloaded tiles. For the sake of simplicity, copy both of the downloaded `.xyz` Raster tiles into the `Raster Data` folder.
    
  </details>      
    
@@ -83,7 +84,7 @@ Rivers are the lifeline of our cities but occasionally, they can become threads 
 
       1. **extent of merged DGM1**: this input is necessary to get the `gdal_calc.py` running properly an of course for defining a Region of Interest  we need to specify the extent of our Project. For simplicity reasons we used the extent of the merged DGM1 `riesa_merged`, which will atomaticially be calculated after setting the Rasterlayer as an input here.
 
-      2. In **Landuse reprojected** we will need the unpacked Vector Layer `DE009L2_DRESDEN_UA2018.shp` from the `Landuse Shapefiles` folder from the steps before. While running th Model, the Landuse Layer will be split into categories and  eventually given weights according to the vunerability of the chosen categories (for more details have look at `documentation`or **`FloodRiskModel.png`).
+      2. In **Landuse reprojected** we will need the unpacked Vector Layer `DE009L2_DRESDEN_UA2018.shp` from the `Landuse Shapefiles` folder from the steps before. While running the Model, the Landuse Layer will be split into categories and  eventually given weights according to the vunerability of the chosen categories (for more details have look at `documentation`or **`FloodRiskModel.png`).
 
       3. **DGM1 merged + reprojected** is the preprocessed Raster Layer `Riesa_merged` which on the one hand side will be used for creating an Area of Interest for our project and on the other hand side it will work as the fundamental input for our Flood Risk Secenarios by `Filling Sinks (Wang & Liu)` and using the `Gdal_calc`.
 
