@@ -26,7 +26,8 @@ Rivers are the lifeline of our cities but occasionally, they can become threats 
 
     * `RasterData` and `Vectordata` folder consist of `.bat`- files which give further instructions on how to process the required Data for the models. 
 
-    * additionally, inside the VectorData-folder we stored preset Vectorstyle-layers in `.png`-Format for further usages that will be shown further down.
+    * Aditionally, inside the Vector- and Raster Data Folder we stored preset Vectorstyle-layers in `.png`-Format for further usages that will be shown further down. 
+ > Note: It is important that QGIS-Styles in `.png` are stored in the same folder as the Layers loaded into QGIS. Otherwise, if this would not be the case, the loaded Layers would be shown in a random default style, even if the Styles are added into the QGIS-Model  
 </details>
  
 <details>
@@ -70,7 +71,7 @@ Rivers are the lifeline of our cities but occasionally, they can become threats 
    
 1. Before using our downloaded Data in `QGIS` it has to be preprocessed via `Gdal`. Therefore we have created `.bat` inside the `vector Data` as well as in the `Raster Data` folder,containing a short documentation on how to process the Data. 
   
-2. After running through the preprocessing you will be able to run the Data in the follwoing Models.
+2. After running through preprocessing you will be able to use the files as inputs for the follwoing Models and run the Analysis automaticially.
    
  </details>      
    
@@ -98,7 +99,7 @@ Rivers are the lifeline of our cities but occasionally, they can become threats 
   
   3. Open the Model `Cartography&Styles.model3` as done with the previous Model.
   
-      1. All the styles need to be copied from the folder `styles` into the same folder as the downloaded OpenStreetMap Data from <a href="https://download.geofabrik.de/europe/germany/sachsen.html">Geofabrik Sachsen</a> (Otherwise the Styles won't be applied ot the layers in QGIS). 
+      1. All the needed Layer Styles  to be copied from the folder `` into the same folder as the downloaded OpenStreetMap Data from <a href="https://download.geofabrik.de/europe/germany/sachsen.html">Geofabrik Sachsen</a> (Otherwise the Styles won't be applied ot the layers in QGIS). 
 
        2. Remove all the layers which don't match with the style names afterwards (because we won't need them).
  
