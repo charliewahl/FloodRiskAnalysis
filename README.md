@@ -68,7 +68,11 @@ Rivers are the lifeline of our cities but occasionally, they can become threats 
 <details>
    <summary><b>1. Pre-processing</b></summary>
 <br/>
-   
+ 
+  
+1. The initially downloaded OpenStreetMap Dataset of Dresden contains more Data than actually needed in our projectmap. Before even using 
+  
+  
 1. Before using our downloaded Data in `QGIS` it has to be preprocessed via `Gdal`. Therefore we have created `.bat` inside the `vector Data` as well as in the `Raster Data` folder,containing a short documentation on how to process the Data. 
   
 2. After running through preprocessing you will be able to use the files as inputs for the follwoing Models and run the Analysis automaticially.
