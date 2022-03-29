@@ -95,7 +95,7 @@ Rivers are the lifeline of our cities but occasionally, they can become threats 
    
       5. The output `Flood Risk Map` is the final output. This means the box will be left as ticked.
    
-      6. `water` is a Category output from the `Landuse reprojected` layer, which will be needed for the final map styling. Save this file under the name `landuse_water´ in the same direcotry as the OpenStreetMap layers e.g. `sachsen-latest-free.shp` 
+      6. `water` is a Category output from the `Landuse reprojected` layer, which will be needed for the final map styling. Save this file under the name `landuse_water` in the same direcotry as the OpenStreetMap layers e.g. `sachsen-latest-free.shp` 
       
       7.  Finally run the Model and have a close look at your outputs!
   
