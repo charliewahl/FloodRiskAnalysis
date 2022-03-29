@@ -46,7 +46,7 @@ Rivers are the lifeline of our cities but occasionally, they can become threats 
    <summary><b>How to aquire Vector Data</b></summary>
 <br/>
  
-* **URBAN ATLAS 2018** Landuse <a href="https://land.copernicus.eu/local/urban-atlas/urban-atlas-2018?tab=download">Urban Atlas 2018</a> and search `Dresden` in the `Download` section. After selecing the correct Dataset ýou need to download and extract the files into the `Vector Data` Folder. In the end you should have a downloaded folder, which consists of four directories. For our project we will only need the Geopackage called `DE009L2_DRESDEN_UA2018_v013.gpkg`, which is stored inside `Data`.
+* **URBAN ATLAS 2018** Landuse <a href="https://land.copernicus.eu/local/urban-atlas/urban-atlas-2018?tab=download">Urban Atlas 2018</a> and search `Dresden` in the download searchbar. After selecing the correct Dataset ýou need to download and extract the files into the `Vector Data` Folder. In the end you should have a downloaded folder, which consists of four directories. For our project we will only need the Geopackage called `DE009L2_DRESDEN_UA2018_v013.gpkg`, which is stored inside `Data`.
    
 * **Geofabrik OSM Data** visit <a href="https://download.geofabrik.de/europe/germany/sachsen.html">Geofabrik Sachsen</a>. Download and store the OSM Data into the `Vector Data` Folder in Shapefile-format (`sachsen-latest-free.shp.zip`) inside the `VectorData`-folder. In addtition it will be necessary to ectract the Data to get access
    
