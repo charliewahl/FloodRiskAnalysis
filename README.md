@@ -7,6 +7,16 @@ Rivers are the lifeline of our cities but occasionally, they can become threats 
                               Risk = probability of occurrence x expectation of damage
    * It is our goal not to show regions most likely to be flooded, but visualize areas that are most likely to experience damage by floodings such as Urban Areas, Infrastructure, Argricultural Land or Green Areas.
 
+
+# Required software
+   * QGIS Desktop 3.16 including the Plugins
+
+     * SAGA 7.8.2-14 
+     * GDAL 3.4.2
+
+   * Visual Studio Code 1.65.2 (or any other texteditor application to open `.bat` files)
+   
+
 # Required data
 
    * Copernicus Landuse Data in Riesa: Urban Atlas LCLU 2018 provides reliable high resolution land use and land cover Data in vector format for the              reference year 2018 (https://land.copernicus.eu/local/urban-atlas/urban-atlas-2018). ! In order to download Data from the Website you have to create an account beforehand. !
@@ -22,11 +32,11 @@ Rivers are the lifeline of our cities but occasionally, they can become threats 
   
   * extract and have a look around the given 'FloodRiskProject.zip' folder.
   
-    * inside you will find a folder called 'Data', in which the required Vector- and Rasterdata will be stored in. Besides, we built two QGIS-Models  `Cartography&Styles.model3` and `FloodRiskMap.model3`. 
+    * inside you will find a folder called `Data`, in which the required Vector- and Rasterdata will be stored in. Besides, we built two QGIS-Models  `Cartography&Styles.model3` and `FloodRiskMap.model3`. 
 
-    * `RasterData` and `Vectordata` folder consist of `.bat`- files which give further instructions on how to process the required Data for the models. 
+    * `RasterData` and `VectorData` folder consist of `.bat`- files which give further instructions on how to process the required Data for the models. 
 
-    * Aditionally, we stored preset Vectorstyle-layers  `.qml`-Format insde the Vector- and Raster Data Folder. The usages will be shown further down. 
+    * Aditionally, we stored preset Vectorstyle-layers  `.qml`-Format insde the Vector- and RasterData Folder. The usages will be shown further down. 
  > Note: It is important that QGIS-Styles in `.qml` are stored in the same folder as the Layers loaded into QGIS. Otherwise, if this would not be the case, the loaded Layers would be shown in a random default style, even if the Styles are added into the QGIS-Model  
 </details>
  
@@ -38,7 +48,7 @@ Rivers are the lifeline of our cities but occasionally, they can become threats 
  
  ![name-of-you-image](https://github.com/charliewahl/FloodRiskAnalysis/blob/main/Download_DEM.png?raw=true)
    
-   * download  and extract the DGM1 tiles into `Raster Data` Folder. In each of the two ectracted folders  you will find a `.xyz` tile which will be used in further processing and a Spreadsheet with specific information on your downloaded tiles. For the sake of simplicity, copy both of the downloaded `.xyz` Raster tiles into the `Raster Data` folder.
+   * download  and extract the DGM1 tiles. In each of the two ectracted folders  you will find a `.xyz` tile, which will be used in further processing, and a Spreadsheet with specific information on your downloaded tiles. For the sake of simplicity, copy both of the downloaded `.xyz` Raster tiles into the `Raster Data` folder.
    
  </details>      
    
@@ -51,29 +61,17 @@ Rivers are the lifeline of our cities but occasionally, they can become threats 
 * **Geofabrik OSM Data** visit <a href="https://download.geofabrik.de/europe/germany/sachsen.html">Geofabrik Sachsen</a>. Download and store the OSM Data into the `Vector Data` Folder in Shapefile-format (`sachsen-latest-free.shp.zip`) inside the `VectorData`-folder. In addtition it will be necessary to ectract the Data to get access
    
    </details> 
-   
-
-# Required software
-   * QGIS Desktop 3.16 including the Plugins
-
-     * SAGA 7.8.2-14 
-     * GDAL 3.4.2
-
-   * Visual Studio Code 1.65.2 (or any other texteditor application to open `.bat` files)
-   
-  
+    
 
 # Methology
 
 <details>
    <summary><b>1. Pre-processing</b></summary>
 <br/>
- 
+   
+1. Move into `Vector Data` and copy the given Mapstyles into the OpenStreetMap Dataset `sachsen-latest-free.shp`. As we don't need the entire Dataset, but only the Vecotrlayers that match the stylenames, delete the excess Vectorfiles.
   
-1. The initially downloaded OpenStreetMap Dataset of Dresden contains more Data than actually needed in our projectmap. Before even using 
-  
-  
-1. Before using our downloaded Data in `QGIS` it has to be preprocessed via `Gdal`. Therefore we have created `.bat` inside the `vector Data` as well as in the `Raster Data` folder,containing a short documentation on how to process the Data. 
+2. Before using our downloaded Data in `QGIS` it has to be preprocessed via `Gdal`. Therefore we have created small scripts inside the `vector Data` as well as in the `Raster Data` folder,containing a short documentation on how to process the Data. 
   
 2. After running through preprocessing you will be able to use the files as inputs for the follwoing Models and run the Analysis automaticially.
    
@@ -100,23 +98,23 @@ Rivers are the lifeline of our cities but occasionally, they can become threats 
       6. `water` is a Category output from the `Landuse reprojected` layer, which will be needed for the final map styling. Save this file under the name `landuse_water´ in the same direcotry as the OpenStreetMap layers e.g. `sachsen-latest-free.shp` 
       
       7.  Finally run the Model and have a close look at your outputs!
+  
 
   
-  3. Open the Model `Cartography&Styles.model3` as done with the previous Model.
+  3. Open the Model `Cartography&Styles.model3` as done earlier.
   
-      1. All the needed Layers to be copied from the folder `` into the same folder as the downloaded OpenStreetMap Data from <a href="https://download.geofabrik.de/europe/germany/sachsen.html">Geofabrik Sachsen</a> (Otherwise the Styles won't be applied ot the layers in QGIS). 
-
-       2. Remove all the layers which don't match with the style names afterwards (because we won't need them).
+  4. Add the required data inputs into the Model 
+  
  
-       3. the specific stylings of the OpeStreetMap geometries are stored under the same name as the geometries exept that they come in `.qml` -Format. Therefore it is necessary to browse the stylings of each layer from the `sachsen-latest-free.shp` into the Model.
+      1. the specific stylings of the OpeStreetMap geometries are stored under the same name as the geometries exept that they come in `.qml` -Format. Therefore it is necessary to browse the stylings of each layer from the `sachsen-latest-free.shp` into the Model.
   
-       4. As before the **DGM1 merged + reprojected** `Riesa_merged` will work as our Area Of Interest for clipping the Layers by an extent.
+       2. As before the **DGM1 merged + reprojected** `Riesa_merged` will work as our Area Of Interest for clipping the Layers by an extent.
   
-       5. Additionally you will have to browse the initially preprocessed OSM files from your files and set them as individual inputs. If you ran through the files as stated in the preprocessing the input files should have the same name as written above the boxes in te modelbuilder.
+       3. Additionally you will have to browse the initially preprocessed OSM files from your files and set them as individual inputs. If you ran through the files as stated in the preprocessing the input files should have the same name as written above the boxes in te modelbuilder.
   
-       6. Run the Model
+       4. Run the Model
   
-       7. Set the order of the created Layers as stated in `QGIS_layer_order.png`
+       5. Set the order of the created Layers as stated in `QGIS_layer_order.png`
           
    
 
