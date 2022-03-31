@@ -36,8 +36,8 @@ Rivers are the lifeline of our cities but occasionally, they can become threats 
 
     * `RasterData` and `VectorData` folder consist of `.bat`- files which give further instructions on how to process the required Data for the models. 
 
-    * Aditionally, we stored preset Vectorstyle-layers  `.qml`-Format insde the Vector- and RasterData Folder. The usages will be shown further down. 
- > Note: It is important that QGIS-Styles in `.qml` are stored in the same folder as the Layers loaded into QGIS. Otherwise, if this would not be the case, the loaded Layers would be shown in a random default style, even if the Styles are added into the QGIS-Model  
+    * Aditionally, we stored preset stylings in  `.qml`-file format insde the Vector- and RasterData Folder. The usages will be shown further down. 
+ > Note: It is important that QGIS-Styles in `.qml` are stored in the same folder as the Layers loaded into QGIS via the QGIS-Model. Otherwise, if this would not be the case, the loaded Layers would be shown in a random default style, even if the Styles are added into the QGIS-Model.
 </details>
  
 <details>
@@ -111,10 +111,12 @@ Rivers are the lifeline of our cities but occasionally, they can become threats 
        2. As before the **DGM1 merged + reprojected** `Riesa_merged` will work as our Area Of Interest for clipping the Layers by an extent.
   
        3. Additionally you will have to browse the initially preprocessed OSM files from your files and set them as individual inputs. If you ran through the files as stated in the preprocessing the input files should have the same name as written above the boxes in te modelbuilder.
+        
+       4. Add the initially saved `final Map` ouput plus it's styling `final Map styling` from the `raster Data` folder into the Model 
   
-       4. Run the Model
+       5. Run the Model
   
-       5. Set the order of the created Layers as stated in `QGIS_layer_order.png`
+       6. Set the order of the created Layers as stated in `QGIS_layer_order.png`
           
    
 
