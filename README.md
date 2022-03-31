@@ -56,7 +56,7 @@ Rivers are the lifeline of our cities but occasionally, they can become threats 
    <summary><b>How to aquire Vector Data</b></summary>
 <br/>
  
-* **URBAN ATLAS 2018** Landuse <a href="https://land.copernicus.eu/local/urban-atlas/urban-atlas-2018?tab=download">Urban Atlas 2018</a> and search `Dresden` in the download searchbar. After selecing the correct Dataset ýou need to download and extract the files into the `VectorData` Folder. In the end you should have a downloaded folder, which consists of four directories. For our project we will only need the Geopackage called `DE009L2_DRESDEN_UA2018_v013.gpkg`, which is stored inside `Data`.
+* **URBAN ATLAS 2018** Landuse <a href="https://land.copernicus.eu/local/urban-atlas/urban-atlas-2018?tab=download">Urban Atlas 2018</a> and search `Dresden` in the download searchbar. After selecing the correct Dataset ýou need to download and extract the files into the `VectorData` Folder. In the end you should have a downloaded folder, which consists of four directories. For our project we will only need the file called `DE009L2_DRESDEN_UA2018_v013.gpkg`, which is stored inside `Data`.
    
 * **Geofabrik OSM Data** visit <a href="https://download.geofabrik.de/europe/germany/sachsen.html">Geofabrik Sachsen</a>. Download and store the OSM Data into the `VectorData` Folder in Shapefile-format (`sachsen-latest-free.shp.zip`) inside the `VectorData`-folder. In addtition it will be necessary to ectract the Data to get access
    
@@ -71,9 +71,9 @@ Rivers are the lifeline of our cities but occasionally, they can become threats 
    
 1. Move into `Vector Data` and copy the given Mapstyles into the OpenStreetMap Dataset `sachsen-latest-free.shp`. As we don't need the entire Dataset, but only the Vecotrlayers that match the stylenames, delete the excess Vectorfiles.
   
-2. Before using our downloaded Data in `QGIS` it has to be preprocessed via `Gdal`. Therefore we have created small scripts inside the `vector Data` as well as in the `Raster Data` folder,containing a short documentation on how to process the Data. 
+2. Before using our downloaded Data in `QGIS` it has to be pre-processed via `Gdal`. Therefore we have created small scripts inside the `vector Data` as well as in the `Raster Data` folder,containing a short documentation on how to process the Data. 
   
-2. After running through preprocessing you will be able to use the files as inputs for the follwoing Models and run the Analysis automaticially.
+2. After running through pre-processing you will be able to use the files as inputs for the follwoing Models and run the Analysis automaticially.
    
  </details>      
    
@@ -85,16 +85,16 @@ Rivers are the lifeline of our cities but occasionally, they can become threats 
 
    2. Add the required data inputs into the Model 
 
-      1. **extent of merged DGM1**: this input is necessary to get the `gdal_calc.py` running properly an of course for defining a Region of Interest  we need to specify the extent of our Project. For simplicity reasons we used the extent of the merged DGM1 `riesa_merged`, which will atomaticially be calculated after setting the Rasterlayer as an input here.
+      1. **extent of merged DGM1**: this input is necessary to get the `gdal_calc.py` running properly an of course for defining a Region of Interest  we need to specify the extent of our Project. For simplicity reasons we used the extent of the merged DGM1 `riesa_merged`, which will automaticially be calculated after setting the Rasterlayer as an input here.
 
-      2. In **Landuse reprojected** we will need the unpacked Vector Layer `DE009L2_DRESDEN_UA2018.shp` from the `Landuse Shapefiles` folder from the steps before. While running the Model, the Landuse Layer will be split into categories and  eventually given weights according to the vunerability of the chosen categories (for more details have look at `documentation`or **`FloodRiskModel.png`).
+      2. In **Landuse reprojected** we will need the unpacked Vector Layer `DE009L2_DRESDEN_UA2018.shp` from the `Landuse_Shapefiles` folder from the pre-processing. While running the Model, the Landuse Layer will be split into categories and  eventually given weights according to the vunerability of the chosen categories (for more details have look at `documentation`or **`FloodRiskModel.png`).
 
       3. **DGM1 merged + reprojected** is the preprocessed Raster Layer `Riesa_merged` which on the one hand side will be used for creating an Area of Interest for our project and on the other hand side it will work as the fundamental input for our Flood Risk Secenarios by `Filling Sinks (Wang & Liu)` and using the `Gdal_calc`.
 
       4. The following Model outputs `weighted categories` and `alarmpoints_merged` have only been added for demonstration reasons-it is up to you whether you want to have a look at them or not
    
-      5. The output `Flood Risk Map` is the final output. This means the box will be left as ticked.
-   
+      5. The output `Flood Risk Map` is the final output. Save it into the `Raster Data` folder (for the follwing Model) and keep the box ticked for visualization in QGIS.
+    
       6. `water` is a Category output from the `Landuse reprojected` layer, which will be needed for the final map styling. Save this file under the name `landuse_water` in the same direcotry as the OpenStreetMap layers e.g. `sachsen-latest-free.shp` 
       
       7.  Finally run the Model and have a close look at your outputs!
